@@ -15,7 +15,7 @@
         <!--Navigation-->
             <nav class="navbar navbar-expand-lg" id="mainNav">
                 <div class="container">
-                    <a class="navbar-brand js-scroll-tigger" href="#">JEAN FORTEROCHE</a>
+                    <a class="navbar-brand js-scroll-tigger" href="index.php">JEAN FORTEROCHE</a>
 
                     <button class="navbar-toggler text-uppercase rounded collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ml-auto ">
                             <li class="nav-item mx-0 mx-lg-1">
-                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-tigger active" href="#">Accueil</a>
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-tigger active" href="index.php">Accueil</a>
                             </li>
                             <li class="nav-item mx-0 mx-lg-1">
                                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-tigger" href="#">Contact</a>
