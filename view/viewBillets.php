@@ -1,9 +1,9 @@
 <?php
 //On inclut le fichier dont on a besoin
-require('model/Manager.php');
+require_once('model/Manager.php');
 
 //On inclu le fichier article.php
-require('model/billetsManager.php');
+require_once('model/billetsManager.php');
 ?>
 
 <?php $title = 'Accueil'; ?>
@@ -48,7 +48,7 @@ while($billet = $billets->fetch())
                             <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet['author']);?></h6>
                             <p class="card-text"><?=htmlspecialchars($billet['content']);?></p>
                             <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet['date_creation']);?></h6>
-                            <a href="#" class="btn btn-primary">Lire ce chapitre</a>
+                            <a href="index.php?action=billet&amp;id=<?= $billet['id'] ?>" class="btn btn-primary">Lire ce chapitre</a>
                         </div>
                     </div>
                 </div>

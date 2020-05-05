@@ -56,3 +56,17 @@ footer
     display: flex;
     flex-wrap: wrap;
 }
+
+.background_billet
+{
+    background-color: rgba(245, 245, 245, 0.5);
+    border-radius: 3px;
+    padding: 1rem 1rem;
+    color: #50FC96;
+}
+
+.container_billet
+{
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
