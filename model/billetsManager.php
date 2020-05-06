@@ -1,6 +1,9 @@
 <?php
 namespace Projet4\Blog\Billet;
 
+
+require_once("model/Manager.php");
+
 class Billet
 {
     //Fonction qui me permet d'afficher les billets du blog
@@ -21,6 +24,9 @@ class Billet
 
         $result->execute(array($id));
 
-        return $result;
+        $billet = $result->fetch();
+
+        return $billet;
+
     }
 }

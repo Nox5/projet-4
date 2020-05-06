@@ -1,36 +1,33 @@
 <?php
-//On inclut le fichier dont on a besoin
-require('model/Manager.php');
-
-//On inclu le fichier article.php
-require('model/billetsManager.php');
-?>
-
-<?php $title = 'Jean Forteroche'; ?>
-
-<?php ob_start(); ?>
-<p>Blog en construction</p>
-
-<?php
-$billet = new \Projet4\Blog\Billet\Billet();
-$billets = $billet->getBillets();
-while($billet = $billets->fetch())
+require('controller/postController.php');
+//L'index.php qui est le chef d'orchestre (le routeur) c'est la première page que l'on appelle.
+try
 {
-?>
-    <div>
-        <h3><?=htmlspecialchars($billet['title']);?></h3>
-        <p><?=htmlspecialchars($billet['content']);?></p>
-        <p><?=htmlspecialchars($billet['author']);?></p>
-        <p><?=htmlspecialchars($billet['date_creation']);?></p>
-    </div>
-    <br />
-<?php
+    if (isset($_GET['action']))
+    {
+        if ($_GET['action'] == 'listBillets')
+        {
+            listBillets();
+        }
+        elseif ($_GET['action'] == 'billet')
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0)
+            {
+                billet();
+            }
+            else
+            {
+                //Erreur on arrête tout, on envoie une exception donc on saute directement au catch
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+    }
+    else
+    {
+        listBillets();
+    }
 }
-
-$db = new \Projet4\Blog\Manager\Manager();
-$db->dbConnect();
-?>
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require('view/template.php'); ?>
+catch(Exception $e)
+{
+    echo 'Erreur : ' .$e->getMessage();
+}

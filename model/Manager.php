@@ -16,18 +16,4 @@ class Manager
 
         return $bdd;
     }
-
-    /*public function getConnect()
-    {
-        //Tentative de connexion à la base de données
-        try
-        {
-            
-        }
-        //On léve une erreur si la connexion échoue
-        catch(Exception $e)
-        {
-            die('Erreur :' .$e->getMessage());
-        }
-    }*/
 }
