@@ -33,14 +33,19 @@ require_once('model/billetsManager.php');
 <?php
 $billet = new \Projet4\Blog\Billet\Billet();
 $billets = $billet->getBillets();
-while($billet = $billets->fetch())
-{
+
 ?>
 <!--Affichage des différents billets-->
     <section class="page-accueil-cards" id="card">
         <div class="container">
             <div class="row">
+            <?php while($billet = $billets->fetch())
+            {
+            ?>
                 <div class="col-md-6 col-lg-4 mb-5">
+
+
+
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/01/16/15/26/humpback-whale-1984341_1280.jpg" alt="chapitre 1">
                         <div class="card-body">
@@ -52,11 +57,12 @@ while($billet = $billets->fetch())
                         </div>
                     </div>
                 </div>
+            <?php } ?>
             </div>
         </div>
     </section>
 <?php
-}
+
 
 $db = new \Projet4\Blog\Manager\Manager();
 $db->dbConnect();
