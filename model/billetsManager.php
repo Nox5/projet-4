@@ -1,6 +1,7 @@
 <?php
 namespace Projet4\Blog\Billet;
 
+
 require_once("model/Manager.php");
 
 class Billet
@@ -26,5 +27,6 @@ class Billet
         $billet = $result->fetch();
 
         return $billet;
+
     }
 }
