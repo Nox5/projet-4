@@ -16,6 +16,25 @@
     </div>
 </section>
 
+<?php
+while ($comment = $comments->fetch())
+{
+?>
+<section id="read-comments">
+    <div class="container_comments container">
+        <div class="background_comment row">
+            <div col-lg-4 mr-auto>
+                <p><strong><?= htmlspecialchars($comment['author']) ?></strong></p>
+                <p><?= htmlspecialchars($comment['content']) ?></p>
+                <p><?= $comment['date_content'] ?></p>
+            </div>
+        </div>
+    </div>
+</section>
+<?php
+}
+?>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('view/template.php');?>
