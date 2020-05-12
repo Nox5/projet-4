@@ -31,7 +31,7 @@ require_once('model/billetsManager.php');
 </section>
 
 <?php
-$billet = new \Projet4\Blog\Billet\Billet();
+$billet = new \Projet4\Blog\Model\Billet();
 $billets = $billet->getBillets();
 while($billet = $billets->fetch())
 {
@@ -58,7 +58,7 @@ while($billet = $billets->fetch())
 <?php
 }
 
-$db = new \Projet4\Blog\Manager\Manager();
+$db = new \Projet4\Blog\Model\Manager();
 $db->dbConnect();
 ?>
 
