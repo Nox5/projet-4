@@ -1,5 +1,5 @@
 <?php
-namespace Projet4\Blog\Billet;
+namespace Projet4\Blog\Model;
 
 
 require_once("model/Manager.php");
@@ -9,7 +9,7 @@ class Billet
     //Fonction qui me permet d'afficher les billets du blog
     public function getBillets()
     {
-        $db = new \Projet4\Blog\Manager\Manager();
+        $db = new \Projet4\Blog\Model\Manager();
         $bdd = $db->dbConnect();
         $result = $bdd->query('SELECT id, title, content, author, date_creation FROM billets ORDER BY id DESC');
 
@@ -18,7 +18,7 @@ class Billet
     //Fonction qui me permets d'afficher un billet spécifiquement
     public function getBillet($id)
     {
-        $db = new \Projet4\Blog\Manager\Manager();
+        $db = new \Projet4\Blog\Model\Manager();
         $connection = $db->dbConnect();
         $result = $connection->prepare('SELECT id, title, content, author, date_creation FROM billets WHERE id = ?');
 

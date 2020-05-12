@@ -1,5 +1,6 @@
 <?php
 require('controller/postController.php');
+require('controller/commentController.php');
 //L'index.php qui est le chef d'orchestre (le routeur) c'est la première page que l'on appelle.
 try
 {
@@ -19,6 +20,24 @@ try
             {
                 //Erreur on arrête tout, on envoie une exception donc on saute directement au catch
                 throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+        elseif ($_GET['action'] == 'addComment')
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0)
+            {
+                if (!empty($_POST['author']) && !empty($_POST['comment']))
+                {
+                    addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+                }
+                else
+                {
+                    echo 'Erreur : tous les champs ne sont pas remplis !';
+                }
+            }
+            else
+            {
+                echo 'Erreur : aucun identifiant de billet envoyé';
             }
         }
     }
