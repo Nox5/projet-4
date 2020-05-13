@@ -34,14 +34,19 @@ require_once('model/billetsManager.php');
 <?php
 $billet = new \Projet4\Blog\Model\Billet();
 $billets = $billet->getBillets();
-while($billet = $billets->fetch())
-{
+
 ?>
 <!--Affichage des différents billets-->
     <section class="page-accueil-cards" id="card">
         <div class="container">
             <div class="row">
+            <?php while($billet = $billets->fetch())
+            {
+            ?>
                 <div class="col-md-6 col-lg-4 mb-5">
+
+
+
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="<?=htmlspecialchars($billet['image']);?>" alt="chapitre 1">
                         <div class="card-body">
@@ -53,11 +58,12 @@ while($billet = $billets->fetch())
                         </div>
                     </div>
                 </div>
+            <?php } ?>
             </div>
         </div>
     </section>
 <?php
-}
+
 
 $db = new \Projet4\Blog\Model\Manager();
 $db->dbConnect();

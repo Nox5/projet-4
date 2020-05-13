@@ -1,17 +1,18 @@
 <?php
-namespace Projet4\Blog\Model;// La classe est dans ce namspace
 
-require_once('model/Manager.php');
+namespace Projet4\Blog\commentManager;//Classe dans ce namespace
 
-class commentManager extends Manager
+require_once('model/manager.php');
+
+class commentManager
 {
-    function postComment($id, $author, $content)
+    public function getComments($id_billet)
     {
-    $db = new \Projet4\Blog\Model\Manager();
-    $bdd = $db->dbConnect();
-    $comments = $bdd->prepare('INSERT INTO comments(id_billet, author, content, date_content) VALUES(?, ?, ?, NOW())');
-    $comments->execute(array($id, $author, $content));
+        $db = new \Projet4\Blog\Manager\Manager();
+        $bdd = $db->dbConnect();
+        $comments = $bdd->prepare('SELECT id, author, content, date_content FROM comments WHERE id_billet = ? ORDER BY date_content DESC');
+        $comments->execute(array($id_billet));
 
-    return $comments;
+        return $comments;
     }
 }
