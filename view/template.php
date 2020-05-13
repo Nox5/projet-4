@@ -46,7 +46,7 @@
                 <div class="row">
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <h4 class="text-blog mb-4">BILLET SIMPLE POUR L'ALASKA</h4>
-                        <p class="lead mb-0">- Jean Forteroche -</p>
+                        <p class="lead mb-0">- Jean Forterochee -</p>
                     </div>
 
                     <div class="col-lg-4 mb-5 mb-lg-0">

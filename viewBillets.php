@@ -1,15 +1,14 @@
 <?php
 //On inclut le fichier dont on a besoin
-require_once('model/Manager.php');
+require('model/Manager.php');
 
 //On inclu le fichier article.php
-require_once('model/billetsManager.php');
+require('model/billetsManager.php');
 ?>
 
 <?php $title = 'Accueil'; ?>
 
 <?php ob_start(); ?>
-
 
 <!--Texte de présentation page d'accueil-->
 <section class="page-accueil text-white mb-0" id="about">
@@ -32,44 +31,31 @@ require_once('model/billetsManager.php');
 </section>
 
 <?php
-$billet = new \Projet4\Blog\Model\Billet();
+$billet = new \Projet4\Blog\Billet\Billet();
 $billets = $billet->getBillets();
-
+while($billet = $billets->fetch())
+{
 ?>
 <!--Affichage des différents billets-->
     <section class="page-accueil-cards" id="card">
-        <div class="container">
-            <div class="row">
-            <?php while($billet = $billets->fetch())
-            {
-            ?>
-                <div class="col-md-6 col-lg-4 mb-5">
-
-
-
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="<?=htmlspecialchars($billet['image']);?>" alt="chapitre 1">
-                        <div class="card-body">
-                            <h5 class="card-title"><?=htmlspecialchars($billet['title']);?></h5>
-                            <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet['author']);?></h6>
-                            <p class="card-text"><?=htmlspecialchars($billet['content']);?></p>
-                            <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet['date_creation']);?></h6>
-                            <a href="index.php?action=billet&amp;id=<?= $billet['id'] ?>" class="btn btn-primary">Lire ce chapitre</a>
-                        </div>
-                    </div>
-                </div>
-            <?php } ?>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/01/16/15/26/humpback-whale-1984341_1280.jpg" alt="chapitre 1">
+            <div class="card-body">
+                <h5 class="card-title"><?=htmlspecialchars($billet['title']);?></h5>
+                <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet['author']);?></h6>
+                <p class="card-text"><?=htmlspecialchars($billet['content']);?></p>
+                <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet['date_creation']);?></h6>
+                <a href="#" class="btn btn-primary">Lire ce chapitre</a>
             </div>
         </div>
     </section>
 <?php
+}
 
-
-$db = new \Projet4\Blog\Model\Manager();
+$db = new \Projet4\Blog\Manager\Manager();
 $db->dbConnect();
 ?>
 
 <?php $content = ob_get_clean(); ?>
 
 <?php require('view/template.php'); ?>
-

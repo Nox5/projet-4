@@ -16,6 +16,7 @@
     </div>
 </section>
 
+
 <?php 
 while ($comment = $comments->fetch())
 {
@@ -34,6 +35,7 @@ while ($comment = $comments->fetch())
 <?php
 }
 ?>
+
 
 <?php $content = ob_get_clean(); ?>
 

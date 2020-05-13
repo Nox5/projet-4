@@ -1,4 +1,5 @@
 <?php
+
 namespace Projet4\Blog\commentManager;//Classe dans ce namespace
 
 require_once('model/manager.php');
