@@ -1,5 +1,6 @@
 <?php
 require('controller/postController.php');
+require('controller/commentController.php');
 //L'index.php qui est le chef d'orchestre (le routeur) c'est la première page que l'on appelle.
 try
 {

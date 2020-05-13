@@ -16,7 +16,7 @@
     </div>
 </section>
 
-<?php
+<?php 
 while ($comment = $comments->fetch())
 {
 ?>
