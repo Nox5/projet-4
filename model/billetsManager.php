@@ -10,7 +10,7 @@ class Billet
     {
         $db = new \Projet4\Blog\Manager\Manager();
         $bdd = $db->dbConnect();
-        $result = $bdd->query('SELECT id, title, content, author, date_creation FROM billets ORDER BY id DESC');
+        $result = $bdd->query('SELECT id, title, content, author, date_creation, image FROM billets ORDER BY id DESC');
 
         return $result;
     }
