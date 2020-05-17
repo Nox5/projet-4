@@ -17,3 +17,12 @@ function billet()
 
     require('view/viewBillet.php');
 }
+
+function addBillet()
+{
+    echo 'je suis dans le controller : ';
+    $billetManager = new Projet4\Blog\Billet\Billet();
+    $billet = $billetManager->createBillet($_POST['title'], $_POST['content'], $_POST['author'], $_POST['image']);
+
+    require('view/createBilletView.php');
+}

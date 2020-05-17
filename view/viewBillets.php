@@ -61,6 +61,7 @@ while($billet = $billets->fetch())
 $db = new \Projet4\Blog\Manager\Manager();
 $db->dbConnect();
 ?>
+<a href = "view/createBilletView.php">Ajouter un billet</a>
 
 <?php $content = ob_get_clean(); ?>
 

@@ -21,6 +21,17 @@ try
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        elseif ($_GET['action'] === 'addBillet')
+        {
+            if (!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['image']) && !empty($_POST['content']))
+            {
+                addBillet();
+            }
+            else
+            {
+                throw new Exception('Tous les champs ne sont pas remplis');
+            }
+        }
     }
     else
     {
