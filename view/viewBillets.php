@@ -68,6 +68,7 @@ $billets = $billet->getBillets();
 $db = new \Projet4\Blog\Model\Manager();
 $db->dbConnect();
 ?>
+<a href = "view/createBilletView.php">Ajouter un billet</a>
 
 <?php $content = ob_get_clean(); ?>
 

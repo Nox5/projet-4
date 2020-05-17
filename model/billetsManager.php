@@ -15,7 +15,7 @@ class Billet
 
         return $result;
     }
-    //Fonction qui me permets d'afficher un billet spécifiquement
+    //Fonction qui me permet d'afficher un billet spécifiquement
     public function getBillet($id)
     {
         $db = new \Projet4\Blog\Model\Manager();
@@ -28,5 +28,20 @@ class Billet
 
         return $billet;
 
+    }
+
+    //Fonction qui permet de créer un nouveau billet
+    public function createBillet($title, $content, $author, $image)
+    {
+        echo ' je suis dans le model';
+        $db = new \Projet4\Blog\Manager\Manager();
+        $connection = $db->dbConnect();
+        $result = $connection->prepare('INSERT INTO billets (title, content, author, image, date_creation) VALUES (?, ?, ?, ?, NOW())');
+
+        $result->execute(array($title, $content, $author, $image));
+
+        $newBillet = $result->fetch();
+
+        return $newBillet;
     }
 }
