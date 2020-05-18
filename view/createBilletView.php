@@ -1,5 +1,8 @@
-<h2>Nouveau billet de blog</h2>
+<?php $title = 'Accueil'; ?>
 
+<?php ob_start(); ?>
+
+<h2>Nouveau billet de blog</h2>
 <form action="../index.php?action=addBillet&id=<?=htmlspecialchars($billet['id']) ?>" method="post">
     <div>
         <label for="title">Titre</label><br />
@@ -33,4 +36,6 @@
     </div>
 </section>
 
+<?php $content = ob_get_clean(); ?>
+<?php require('template.php'); ?>
 

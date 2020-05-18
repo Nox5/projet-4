@@ -9,6 +9,8 @@ require_once('model/billetsManager.php');
 <?php $title = 'Accueil'; ?>
 
 <?php ob_start(); ?>
+<form action="traitement.php" method="post"><textarea style="width: 100%;" name="content"><br /> </textarea>
+<input name="send" type="submit" value="Envoyer" /></form>
 
 
 <!--Texte de présentation page d'accueil-->
@@ -30,6 +32,8 @@ require_once('model/billetsManager.php');
         </div>
     </div>
 </section>
+
+
 
 <?php
 $billet = new \Projet4\Blog\Model\Billet();
