@@ -26,6 +26,7 @@ try
             if (!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['image']) && !empty($_POST['content']))
             {
                 addBillet();
+                header('Location: index.php?action=addBillet&id=' .$id);
             }
             else
             {

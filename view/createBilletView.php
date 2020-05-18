@@ -1,6 +1,6 @@
 <h2>Nouveau billet de blog</h2>
 
-<form action="../index.php?action=addBillet&amp;id=tuesici" method="post">
+<form action="../index.php?action=addBillet&id=<?=htmlspecialchars($billet['id']) ?>" method="post">
     <div>
         <label for="title">Titre</label><br />
         <input type="text" id="title" name="title" />
