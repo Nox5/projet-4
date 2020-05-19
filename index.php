@@ -1,5 +1,6 @@
 <?php
 require('controller/postController.php');
+require('controller/commentController.php');
 //L'index.php qui est le chef d'orchestre (le routeur) c'est la première page que l'on appelle.
 try
 {
@@ -19,6 +20,19 @@ try
             {
                 //Erreur on arrête tout, on envoie une exception donc on saute directement au catch
                 throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+        elseif ($_GET['action'] === 'addBillet')
+        {
+            if (!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['image']) && !empty($_POST['content']))
+            {
+                addBillet();
+                header('Location: index.php?action=addBillet&id=' .$id);
+            }
+            else
+            {
+                throw new Exception('Tous les champs ne sont pas remplis');
+
             }
         }
     }

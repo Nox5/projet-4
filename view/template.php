@@ -4,6 +4,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+        <script src="public/js/tinymce/js/tinymce/tinymce.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+        tinyMCE.init({
+            mode : "textareas",
+            language : "fr_FR",
+            theme : "silver"
+        });
+        </script>
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="public/css/index.css">
 
@@ -46,7 +55,7 @@
                 <div class="row">
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <h4 class="text-blog mb-4">BILLET SIMPLE POUR L'ALASKA</h4>
-                        <p class="lead mb-0">- Jean Forteroche -</p>
+                        <p class="lead mb-0">- Jean Forterochee -</p>
                     </div>
 
                     <div class="col-lg-4 mb-5 mb-lg-0">
@@ -61,8 +70,6 @@
                     <p class="langage-annee mb-0">PHP blog / 2020</p>
                 </div>
                 </div>
-
-                
             </div>
         </footer>
 
