@@ -44,4 +44,15 @@ class Billet
 
         return $newBillet;
     }
+
+    public function deleteBillet($id)
+    {
+        $db = new \Projet4\Blog\Manager\Manager();
+        $connection = $db->dbConnect();
+        $delete = $connection->prepare('DELETE FROM billets WHERE id = ?');
+
+        $delete->execute(array($id));
+
+        return $delete;
+    }
 }
