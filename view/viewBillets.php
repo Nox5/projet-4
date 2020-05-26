@@ -36,7 +36,7 @@ require_once('model/billetsManager.php');
 
 
 <?php
-$billet = new \Projet4\Blog\Model\Billet();
+$billet = new \Projet4\Blog\Billet\Billet();
 $billets = $billet->getBillets();
 
 ?>

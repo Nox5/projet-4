@@ -31,4 +31,3 @@ function addBillet()
 
     require('view/createBilletView.php');
 }
-}

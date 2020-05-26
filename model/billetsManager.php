@@ -1,10 +1,10 @@
 <?php
-namespace Projet4\Blog\Model;
+namespace Projet4\Blog\Billet;
 
 
 require_once("model/Manager.php");
 
-class Billet
+class Billet//Manager
 {
     //Fonction qui me permet d'afficher les billets du blog
     public function getBillets()
