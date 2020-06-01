@@ -9,10 +9,6 @@ require_once('model/billetsManager.php');
 <?php $title = 'Accueil'; ?>
 
 <?php ob_start(); ?>
-<form action="traitement.php" method="post"><textarea style="width: 100%;" name="content"><br /> </textarea>
-<input name="send" type="submit" value="Envoyer" /></form>
-
-
 <!--Texte de présentation page d'accueil-->
 <section class="page-accueil text-white mb-0" id="about">
     <div class="container">
@@ -36,7 +32,7 @@ require_once('model/billetsManager.php');
 
 
 <?php
-$billet = new \Projet4\Blog\Model\Billet();
+$billet = new \App\Model\Billet();
 $billets = $billet->getBillets();
 
 ?>
@@ -69,10 +65,10 @@ $billets = $billet->getBillets();
 <?php
 
 
-$db = new \Projet4\Blog\Model\Manager();
+$db = new \App\Model\Manager();
 $db->dbConnect();
 ?>
-<a href = "view/createBilletView.php">Ajouter un billet</a>
+<a href = "index.php?action=addBillet">Ajouter un billet</a>
 
 <?php $content = ob_get_clean(); ?>
 

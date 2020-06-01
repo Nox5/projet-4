@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 <h2>Nouveau billet de blog</h2>
-<form action="../index.php?action=addBillet&id=<?=htmlspecialchars($billet['id']) ?>" method="post">
+<form action="index.php?action=addBillet" method="post">
     <div>
         <label for="title">Titre</label><br />
         <input type="text" id="title" name="title" />
@@ -27,10 +27,16 @@
     <div class="container">
         <div class="background_newBillet row">
             <div class="col-lg-4 mr-auto">
-                <h4><?=htmlspecialchars($billet['title']) ?></h4>
-                <p><?=htmlspecialchars($billet['content']) ?></p>
-                <p><?=htmlspecialchars($billet['author']) ?></p>
-                <p><?=htmlspecialchars($billet['image']) ?></p>
+                <?php
+                if(!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['image']) && !empty($_POST['content'])){
+                ?>
+                    <h4><?=htmlspecialchars($billet['title']) ?></h4>
+                    <p><?=htmlspecialchars($billet['content']) ?></p>
+                    <p><?=htmlspecialchars($billet['author']) ?></p>
+                    <p><?=htmlspecialchars($billet['image']) ?></p>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -38,4 +44,3 @@
 
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php'); ?>
-
