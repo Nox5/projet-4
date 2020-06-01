@@ -1,33 +1,51 @@
 <?php 
+namespace App\Controller;
+
 require_once('model/Manager.php');
 require_once('model/billetsManager.php');
 require_once('model/commentManager.php');
 
-function listBillets()
+class BilletController
 {
+    public function listBillets()
+    {
 
-    $billetManager = new Projet4\Blog\Billet\Billet();//Création de l'objet
+    $billetManager = new \App\Model\Billet();//Création de l'objet
 
     $billets = $billetManager->getBillets();//Appel d'une fonction de cet objet
 
     require('view/viewBillets.php');
-}
+    }
 
-function billet()
-{
-    $billetManager = new Projet4\Blog\Billet\Billet();//Création de l'objet
-
+    public function billet()
+    {
+    $billetManager = new \App\Model\Billet();//Création de l'objet
     $billet = $billetManager->getBillet($_GET['id']);
-    $delete = $billetManager->deleteBillet($_GET['id']);
-
+    //$delete = $billetManager->deleteBillet($_GET['id']);
     require('view/viewBillet.php');
-}
+    }
 
-function addBillet()
-{
-    echo 'je suis dans le controller : ';
-    $billetManager = new Projet4\Blog\Billet\Billet();
-    $billet = $billetManager->createBillet($_POST['title'], $_POST['content'], $_POST['author'], $_POST['image']);
+    public function addBillet()
+    {
+        if (!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['image']) && !empty($_POST['content']))
+        {
+            $billetManager = new \App\Model\Billet();
+            $billetManager->createBillet($_POST['title'], $_POST['content'], $_POST['author'], $_POST['image']);
 
-    require('view/createBilletView.php');
+            require('view/viewBillets.php');
+        }
+        else
+        {
+            require('view/createBilletView.php');
+            //throw new Exception('Tous les champs ne sont pas remplis');
+        }
+    }
+
+    public function suprBillet($id)
+    {
+        $delete = new \App\Model\Billet();
+        $delete->deleteBillet($id);
+
+        require('view/viewBillets.php');
+    }
 }

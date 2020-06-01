@@ -1,8 +1,12 @@
 <?php
+namespace App\Controller;
+
 require_once('model/commentManager.php');
 
-function addComment($id, $author, $content)
+class commentController
 {
+    public function addComment($id, $author, $content)
+    {
     $commentManager = new \Projet4\Blog\Model\commentManager();
     $affectedLines = $commentManager->postComment($id, $author, $content);
 
@@ -13,5 +17,6 @@ function addComment($id, $author, $content)
     else
     {
         header('Location: index.php?action=comment&id=' . $id);
+    }
     }
 }

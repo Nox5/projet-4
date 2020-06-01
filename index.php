@@ -8,13 +8,15 @@ try
     {
         if ($_GET['action'] == 'listBillets')
         {
-            listBillets();
+            $billetsController = new \App\Controller\BilletController();
+            $billetsController->listBillets();
         }
         elseif ($_GET['action'] == 'billet')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                billet();
+                $billetsController = new \App\Controller\BilletController();
+                $billetsController->billet();
             }
             else
             {
@@ -24,21 +26,23 @@ try
         }
         elseif ($_GET['action'] === 'addBillet')
         {
-            if (!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['image']) && !empty($_POST['content']))
+                $billetController = new \App\Controller\BilletController();
+                $billetController->addBillet();
+        }
+        elseif ($_GET['action'] === 'deleteBillet')
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                addBillet();
-                header('Location: index.php?action=addBillet&id=' .$id);
-            }
-            else
-            {
-                throw new Exception('Tous les champs ne sont pas remplis');
-
+                //throw new Exception("id du billet manquant");
+                $billetController = new \App\Controller\BilletController();
+                $billetController->suprBillet($_GET['id']);
             }
         }
     }
     else
     {
-        listBillets();
+        $billets = new \App\Controller\BilletController;
+        $billets->listBillets();
     }
 }
 catch(Exception $e)

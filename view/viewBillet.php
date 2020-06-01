@@ -13,7 +13,7 @@
                 <em><?= nl2br($billet['date_creation']) ?></em>
             </div>
             <div col-lg-4>
-                <a href="index.php?billet&id" class="btn btn-outline-dark">Supprimer ce billet</a>
+                <a href="index.php?action=deleteBillet&amp;id=<?=($billet['id'])?>" class="btn btn-outline-dark">Supprimer ce billet</a>
             </div>
         </div>
     </div>
