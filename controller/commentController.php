@@ -7,7 +7,7 @@ class commentController
 {
     public function addComment($id, $author, $content)
     {
-    $commentManager = new \Projet4\Blog\Model\commentManager();
+    $commentManager = new \App\Model\commentManager();
     $affectedLines = $commentManager->postComment($id, $author, $content);
 
     if ($affectedLines === false)

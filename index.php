@@ -1,6 +1,7 @@
 <?php
 require('controller/postController.php');
 require('controller/commentController.php');
+require('controller/adminController.php');
 //L'index.php qui est le chef d'orchestre (le routeur) c'est la première page que l'on appelle.
 try
 {
@@ -37,6 +38,14 @@ try
                 $billetController = new \App\Controller\BilletController();
                 $billetController->suprBillet($_GET['id']);
             }
+        }
+        elseif ($_GET['action'] === 'connexionLogin')
+        {
+            //if (isset($_POST) && !empty($_POST))
+            //{
+                $connexionLog = new \App\Controller\adminController();
+                $connexionLog->connexionLogin();
+            //}
         }
     }
     else

@@ -14,6 +14,7 @@
             </div>
             <div col-lg-4>
                 <a href="index.php?action=deleteBillet&amp;id=<?=($billet['id'])?>" class="btn btn-outline-dark">Supprimer ce billet</a>
+                <button type="button" class="btn btn-primary" href = "index.php?action=addBillet">Signaler ce commentaire</button>
             </div>
         </div>
     </div>

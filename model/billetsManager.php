@@ -12,6 +12,7 @@ class Billet//Manager
         $db = new \App\Model\Manager();
         $bdd = $db->dbConnect();
         $result = $bdd->query('SELECT id, title, content, author, date_creation, image FROM billets ORDER BY id DESC');
+
         return $result;
     }
     //Fonction qui me permet d'afficher un billet spécifiquement
@@ -37,6 +38,8 @@ class Billet//Manager
         $result = $connection->prepare('INSERT INTO billets (title, content, author, image, date_creation) VALUES (?, ?, ?, ?, NOW())');
 
         $result->execute(array($title, $content, $author, $image));
+
+        return $result;
     }
 
     public function deleteBillet($id)

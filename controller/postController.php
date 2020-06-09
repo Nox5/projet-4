@@ -9,20 +9,20 @@ class BilletController
 {
     public function listBillets()
     {
+        $billetManager = new \App\Model\Billet();//Création de l'objet
 
-    $billetManager = new \App\Model\Billet();//Création de l'objet
+        $result = $billetManager->getBillets();//Appel d'une fonction de cet objet
 
-    $billets = $billetManager->getBillets();//Appel d'une fonction de cet objet
 
-    require('view/viewBillets.php');
+        require('view/viewBillets.php');
     }
 
     public function billet()
     {
-    $billetManager = new \App\Model\Billet();//Création de l'objet
-    $billet = $billetManager->getBillet($_GET['id']);
-    //$delete = $billetManager->deleteBillet($_GET['id']);
-    require('view/viewBillet.php');
+        $billetManager = new \App\Model\Billet();//Création de l'objet
+        $billet = $billetManager->getBillet($_GET['id']);
+        //$delete = $billetManager->deleteBillet($_GET['id']);
+        require('view/viewBillet.php');
     }
 
     public function addBillet()
@@ -30,9 +30,10 @@ class BilletController
         if (!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['image']) && !empty($_POST['content']))
         {
             $billetManager = new \App\Model\Billet();
-            $billetManager->createBillet($_POST['title'], $_POST['content'], $_POST['author'], $_POST['image']);
-
+            $add = $billetManager->createBillet($_POST['title'], $_POST['content'], $_POST['author'], $_POST['image']);
+            echo 'je suis la';
             require('view/viewBillets.php');
+
         }
         else
         {
