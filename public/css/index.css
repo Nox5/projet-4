@@ -62,14 +62,36 @@ footer
 
 .background_billet
 {
-    background-color: rgba(245, 245, 245, 0.5);
+    background-color: white;
     border-radius: 3px;
     padding: 1rem 1rem;
-    color: #50FC96;
+    color: black;
 }
 
 .container_billet
 {
     margin-top: 2em;
     margin-bottom: 2em;
+}
+
+.container_comments .background_comment p
+{
+    color: white;
+}
+
+.container_addcomment h2, label
+{
+    color: white;
+}
+
+.container_comments
+{
+    background-color: rgba(245, 245, 245, 0.5);
+    margin-bottom: 5%;
+}
+
+.headercommentaires h2
+{
+    color: white;
+    margin: 2em 0em 1em;
 }

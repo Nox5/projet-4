@@ -14,4 +14,15 @@ class commentManager
 
         return $comments;
     }
+
+    public function postComments($id, $author, $content)
+    {
+        $db = new \App\Model\Manager();
+        $bdd = $db->dbConnect();
+
+        $comments = $bdd->prepare('INSERT INTO comments(id_billet, author, content, date_content) VALUES(?, ?, ?, NOW())');
+        $comments->execute(array($id, $author, $content));
+
+        return $comments;
+    }
 }

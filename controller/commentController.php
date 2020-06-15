@@ -7,8 +7,9 @@ class commentController
 {
     public function addComment($id, $author, $content)
     {
+        print 'coucou1 Controller:';
     $commentManager = new \App\Model\commentManager();
-    $affectedLines = $commentManager->postComment($id, $author, $content);
+    $affectedLines = $commentManager->postComments($id, $author, $content);
 
     if ($affectedLines === false)
     {
@@ -16,7 +17,7 @@ class commentController
     }
     else
     {
-        header('Location: index.php?action=comment&id=' . $id);
+        header('Location: index.php?action=billet&id=' . $_GET['id']);
     }
     }
 }

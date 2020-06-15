@@ -2,19 +2,34 @@
 
 <?php ob_start(); ?>
 
+
+<div class="headercommentaires container-fluid">
+    <div class="row">
+        <div class="col-lg-4 mr-auto">
+        <h2>Se connecter</h2>
+        </div>
+    </div>
+</div>
+
+
 <div class ="container">
-    <h3>Connexion</h3>
-    <form action="index.php?action=connexionLogin" method="POST">
-        <div class="form-group">
-            <label for="username">Pseudo</label>
-            <input type="text" class="form-control" id="pseudo" name="username" placeholder="Entrez votre pseudo">
+    <div class="row">
+        <div class="col-12">
+            <form action="index.php?action=connexionLogin" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="pseudo" name="username" placeholder="Pseudo">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="password">Mot de passe</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Entrez votre mot de passe">
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Valider</button>
         </div>
-        <button type="submit" class="btn btn-primary">Valider</button>
-    </form>
+    </div>
 </div>
 
 

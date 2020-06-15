@@ -21,8 +21,17 @@ class BilletController
     {
         $billetManager = new \App\Model\Billet();//Création de l'objet
         $billet = $billetManager->getBillet($_GET['id']);
+
+        $commentManager = new \App\Model\commentManager();
+        $comments = $commentManager->getComments($_GET['id']);
         //$delete = $billetManager->deleteBillet($_GET['id']);
         require('view/viewBillet.php');
+    }
+
+    public function test()
+    {
+        $a = "test";
+        return $a;
     }
 
     public function addBillet()

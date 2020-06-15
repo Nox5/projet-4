@@ -10,7 +10,7 @@
             <div class="col">
                 <h1 class="text-center">Administration</h1>
             </div>
-            
+
         </div>
         <div class="col-lg-4 mr-auto">
             <button type="button" class="btn btn-primary" href = "index.php?action=addBillet">Ajouter un article</button>
