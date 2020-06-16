@@ -1,11 +1,19 @@
 <?php
 namespace App\Model;
 
+use PDO;
 
 require_once("model/Manager.php");
 
 class Billet//Manager
 {
+    private $_db; //Instance de PDO
+
+
+    public function __construct($db)
+    {
+        $this->setDB($db);
+    }
     //Fonction qui me permet d'afficher les billets du blog
     public function getBillets()
     {
@@ -49,6 +57,10 @@ class Billet//Manager
         $delete = $connection->prepare('DELETE FROM billets WHERE id = ?');
 
         $delete->execute(array($id));
-        //return $delete;
+    }
+
+    public function setDb(PDO $db)
+    {
+        $this->_db = $db;
     }
 }
