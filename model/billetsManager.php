@@ -4,16 +4,11 @@ namespace App\Model;
 use PDO;
 
 require_once("model/Manager.php");
+require_once("model/modelArticle.php");
 
 class Billet//Manager
 {
-    private $_db; //Instance de PDO
 
-
-    public function __construct($db)
-    {
-        $this->setDB($db);
-    }
     //Fonction qui me permet d'afficher les billets du blog
     public function getBillets()
     {
@@ -32,8 +27,12 @@ class Billet//Manager
 
         $result->execute(array($id));
 
-        $billet = $result->fetch();
-
+        $billet = $result->fetch(PDO:: FETCH_ASSOC);
+        $article = new \App\Model\Article();
+        $article->hydrate($billet);
+        var_dump($article);
+        var_dump($billet);
+        die;
         return $billet;
 
     }

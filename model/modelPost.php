@@ -23,36 +23,6 @@ class Post
             }
         }
         return $this;
-
-        if (isset($donnees['id']))
-        {
-            $this->setId($donnees['id']);
-        }
-
-        if (isset($donnees['id_billet']))
-        {
-            $this->setIdBillet($donnees['id_billet']);
-        }
-
-        if (isset($donnees['author']))
-        {
-            $this->setAuthor($donnees['author']);
-        }
-
-        if (isset($donnees['content']))
-        {
-            $this->setContent($donnees['content']);
-        }
-
-        if (isset($donnees['date_content']))
-        {
-            $this->setDateContent($donnees['date_content']);
-        }
-
-        if (isset($donnees['signalement']))
-        {
-            $this->setSignalement($donnees['signalement']);
-        }
     }
 
     //Liste des getters

@@ -18,6 +18,7 @@ class Article
         {
             //On récupère le nom du setter correspondant à l'attribut.
             $method = 'set'.ucfirst($key);
+            echo $method . "\n";
             //Si le setter correspondant existe
             if (method_exists($this, $method))
             {
