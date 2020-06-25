@@ -9,35 +9,35 @@ class BilletController
 {
     public function listBillets()
     {
+        $billetManager = new \App\Model\Billet();//Création de l'objet
+        $billets = $billetManager->getBillets();//Appel d'une fonction de cet objet
 
-    $billetManager = new \App\Model\Billet();//Création de l'objet
-
-    $billets = $billetManager->getBillets();//Appel d'une fonction de cet objet
-
-    require('view/viewBillets.php');
+        require('view/viewBillets.php');
     }
 
     public function billet()
     {
-    $billetManager = new \App\Model\Billet();//Création de l'objet
-    $billet = $billetManager->getBillet($_GET['id']);
-    //$delete = $billetManager->deleteBillet($_GET['id']);
-    require('view/viewBillet.php');
+        $billetManager = new \App\Model\Billet();//Création de l'objet
+        $billet = $billetManager->getBillet($_GET['id']);
+
+        $commentManager = new \App\Model\commentManager();
+        $resultComments = $commentManager->getComments($_GET['id']);
+
+        require('view/viewBillet.php');
     }
 
     public function addBillet()
     {
-        if (!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['image']) && !empty($_POST['content']))
+        if (!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['content']) && !empty($_POST['image']))
         {
-            $billetManager = new \App\Model\Billet();
-            $billetManager->createBillet($_POST['title'], $_POST['content'], $_POST['author'], $_POST['image']);
 
-            require('view/viewBillets.php');
+            $billetManager = new \App\Model\Billet();
+            $results = $billetManager->createBillet($_POST['title'], $_POST['author'], $_POST['content'], $_POST['image']);
+            $this->listBillets();
         }
         else
         {
             require('view/createBilletView.php');
-            //throw new Exception('Tous les champs ne sont pas remplis');
         }
     }
 
@@ -46,6 +46,6 @@ class BilletController
         $delete = new \App\Model\Billet();
         $delete->deleteBillet($id);
 
-        require('view/viewBillets.php');
+        $this->listBillets();
     }
 }
