@@ -7,13 +7,13 @@
     <div class="container_billet container-fluid">
         <div class="background_billet row justify-content-between">
             <div col-lg-4 mr-auto>
-                <h3><?=htmlspecialchars($billet['title']) ?></h3>
-                <h4><?=nl2br(htmlspecialchars($billet['author'])) ?></h4>
-                <p><?=htmlspecialchars($billet['content']) ?></p>
-                <em><?= nl2br($billet['date_creation']) ?></em>
+                <h3><?=htmlspecialchars($billet->title()) ?></h3>
+                <h4><?=nl2br(htmlspecialchars($billet->author())) ?></h4>
+                <p><?=$billet->content() ?></p>
+                <em><?= nl2br($billet->date_creation()) ?></em>
             </div>
             <div col-lg-4>
-                <a href="index.php?action=deleteBillet&amp;id=<?=($billet['id'])?>" class="btn btn-outline-dark">Supprimer ce billet</a>
+                <a href="index.php?action=deleteBillet&amp;id=<?=$billet->id()?>" class="btn btn-outline-dark">Supprimer ce billet</a>
             </div>
         </div>
     </div>
@@ -29,22 +29,22 @@
 </div>
 
 <?php 
-while ($comment = $comments->fetch())
+foreach($resultComments as $comments)
 {
 ?>
 <section id="read-comments">
     <div class="container_comments container">
         <div class="row justify-content-between">
             <div class="col-4">
-                <p><strong><?= htmlspecialchars($comment['author']) ?></strong></p>
+                <p><strong><?= htmlspecialchars($comments->author()) ?></strong></p>
             </div>
             <div class="col-4">
-                <p>Le : <?= $comment['date_content'] ?></p>
+                <p>Le : <?= $comments->date_content() ?></p>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <p><?= $comment['content'] ?></p>
+                <p><?= $comments->content()?></p>
             </div>
         </div>
         <div class="row justify-content-end">
@@ -63,7 +63,7 @@ while ($comment = $comments->fetch())
     <div class="container_addcomment container-fluid">
         <div col-lg-4 mr-auto>
             <h2>Ajouter un commentaire</h2>
-            <form action="index.php?action=addComment&id=<?= $billet['id'] ?>" method="post">
+            <form action="index.php?action=addComment&id=<?= $billet->id() ?>" method="post">
                 <div>
                     <label for="author">Pseudo</label><br />
                     <input type="text" id="author" name="author" />

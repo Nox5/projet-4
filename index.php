@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('controller/postController.php');
 require('controller/commentController.php');
 require('controller/adminController.php');
@@ -46,8 +47,12 @@ try
         }
         elseif ($_GET['action'] === 'addBillet')
         {
+            //Je veux savoir si une connection est existante
+            //if (isset($_SESSION['connecte']))
+            //{
                 $billetController = new \App\Controller\BilletController();
                 $billetController->addBillet();
+            //}
         }
         elseif ($_GET['action'] === 'deleteBillet')
         {
@@ -60,11 +65,8 @@ try
         }
         elseif ($_GET['action'] === 'connexionLogin')
         {
-            //if (isset($_POST) && !empty($_POST))
-            //{
-                $connexionLog = new \App\Controller\adminController();
-                $connexionLog->connexionLogin();
-            //}
+            $connexionLog = new \App\Controller\adminController();
+            $connexionLog->connexionLogin();
         }
     }
     else

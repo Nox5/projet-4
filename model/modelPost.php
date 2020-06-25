@@ -7,7 +7,7 @@ class Post
     private $_author;
     private $_content;
     private $_date_content;
-    private $_signalement;
+    //private $_signalement;
 
     public function hydrate(array $donnees)
     {
@@ -39,7 +39,7 @@ class Post
         $this->_id = (int) $id;
     }
 
-    public function setIdBillet($id_billet)
+    public function setId_Billet($id_billet)
     {
         $this->_id_billet = (int) $id_billet;
     }
@@ -57,7 +57,7 @@ class Post
         $this->_content = $content;
     }
 
-    public function setDateContent($date_content)
+    public function setDate_Content($date_content)
     {
         $this->_date_content = $date_content;
     }

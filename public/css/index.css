@@ -95,3 +95,14 @@ footer
     color: white;
     margin: 2em 0em 1em;
 }
+
+/*VUE ADMIN*/
+.text-center
+{
+    color: white;
+}
+
+.adminGestion h2
+{
+    color: white;
+}

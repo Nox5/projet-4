@@ -3,7 +3,6 @@ namespace App\Model;
 
 class Article
 {
-    private $_db;
     private $_id;
     private $_title;
     private $_content;
@@ -18,7 +17,7 @@ class Article
         {
             //On récupère le nom du setter correspondant à l'attribut.
             $method = 'set'.ucfirst($key);
-            echo $method . "\n";
+            //$method = ucwords($method);
             //Si le setter correspondant existe
             if (method_exists($this, $method))
             {
@@ -69,7 +68,7 @@ class Article
         }
     }
 
-    public function setDateCreation($dateCreation)
+    public function setDate_Creation($dateCreation)
     {
         $this->_date_creation = $dateCreation;
     }

@@ -8,31 +8,28 @@ class adminController
 {
    public function connexionLogin()
    {
-       //On verifie si les variables username et password sont déclarés
-       if (!empty($_POST['username']) && !empty($_POST['password']))
-       {
-           echo session_save_path();
-           //sauvegarder l'utilisateur en session
-            session_start();
-
-            $login = new \App\Model\UsersManager();
-            $user = $login->testConnexion();
-            //On enregistre le login de session
-            $_SESSION['user'] =  $user;
-            //rediriger vers la page après le login (administration...)
-            header('Location: view/viewAdmin.php');
-
-            if ($user === false)
+        if (isset($_POST) && !empty($_POST))
+        {
+            if (!empty(htmlspecialchars($_POST['username'])) && !empty(htmlspecialchars($_POST['password'])))
             {
-                echo 'Identifiants inconnus';
-                header('Location: index.php');
+                $login = new \App\Model\UsersManager();
+                $user = $login->testConnexion();
+                //var_dump($user);
             }
-            var_dump($user);
-       }
-       //Sinon on envoi vers le formulaire
-       else
-       {
-           require('view/viewLogin.php');
-       }
-   }
+            if ($user)
+            {
+                $_SESSION['user'] =  $_POST['username'];
+                $_SESSION['password'] = $_POST['password'];
+                require('view/viewAdmin.php');
+            }
+            else
+            {
+                echo 'erreur identifiant';
+            }
+        }
+        else
+        {
+            require('view/viewLogin.php');
+        }
+    }
 }

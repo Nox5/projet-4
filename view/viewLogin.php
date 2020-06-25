@@ -22,12 +22,10 @@
                 <div class="form-group">
                     <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
                 </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Valider</button>
+                </div>
             </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <button type="submit" class="btn btn-primary">Valider</button>
         </div>
     </div>
 </div>

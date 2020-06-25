@@ -33,19 +33,18 @@ require_once('model/billetsManager.php');
     <section class="page-accueil-cards" id="card">
         <div class="container">
             <div class="row">
-            <?php while($billet = $result->fetch())
+            <?php foreach($billets as $billet)//On parcourt $billets, la valeur de l'item courant est copié dans $billet
             {
             ?>
                 <div class="col-md-6 col-lg-4 mb-5">
-
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="<?=htmlspecialchars($billet['image']);?>" alt="chapitre 1">
+                        <img class="card-img-top" src="<?=htmlspecialchars($billet->image());?>" alt="chapitre 1">
                         <div class="card-body">
-                            <h5 class="card-title"><?=htmlspecialchars($billet['title']);?></h5>
-                            <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet['author']);?></h6>
-                            <p class="card-text"><?=$billet['content'];?></p>
-                            <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet['date_creation']);?></h6>
-                            <a href="index.php?action=billet&amp;id=<?= $billet['id'] ?>" class="btn btn-primary">Lire ce chapitre</a>
+                            <h5 class="card-title"><?=htmlspecialchars($billet->title());?></h5>
+                            <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet->author());?></h6>
+                            <p class="card-text"><?=$billet->content();?></p>
+                            <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet->date_creation());?></h6>
+                            <a href="index.php?action=billet&id=<?= $billet->id(); ?>" class="btn btn-primary">Lire ce chapitre</a>
                         </div>
                     </div>
                 </div>
