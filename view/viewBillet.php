@@ -4,29 +4,60 @@
 <?php ob_start(); ?>
 <!--Affichage du billet-->
 <section id="read-billet">
-    <div class="container_billet container-fluid">
-        <div class="background_billet row justify-content-between">
-            <div col-lg-4 mr-auto>
+    <div class="container_billet container">
+        <div class="background_billet row">
+            <div class="col">
                 <h3><?=htmlspecialchars($billet->title()) ?></h3>
                 <h4><?=nl2br(htmlspecialchars($billet->author())) ?></h4>
                 <p><?=$billet->content() ?></p>
                 <em><?= nl2br($billet->date_creation()) ?></em>
             </div>
-            <div col-lg-4>
-                <a href="index.php?action=deleteBillet&amp;id=<?=$billet->id()?>" class="btn btn-outline-dark">Supprimer ce billet</a>
+            <div class="col-lg-2">
+                <?php 
+                    if (isLogged())
+                    {
+                ?>
+                    <a href="index.php?action=deleteBillet&amp;id=<?=$billet->id()?>" class="btn btn-outline-dark">Supprimer </a><br />
+                    <a href="index.php?action=submitUpdate&amp;id=<?=$billet->id()?>" class="btn btn-outline-dark">modifier </a>
+                <?php 
+                    }
+                ?>
             </div>
         </div>
     </div>
 </section>
 
-<!--Affichage des commentaires liés au billet-->
-<div class="headercommentaires container-fluid">
+
+<div class="container-fluid">
     <div class="row">
-        <div class="col-lg-4 mr-auto">
-        <h2>Commentaires</h2>
+        <div class="bouton_vue_billet col-4">
+            <p><a href="index.php" class="btn btn-outline-dark">Retour à la liste des billets</a></p>
         </div>
     </div>
 </div>
+
+
+<!--Ajouter un commentaire au billet-->
+<section id="add-comments">
+    <div class="container_addcomment container-fluid">
+        <div col-lg-4 mr-auto>
+            <h5>Commentaires</h5>
+            <div class="bordure"></div><br />
+            <form action="index.php?action=addComment&id=<?= $billet->id() ?>" method="post">
+                <div>
+                    <label for="author">Nom : </label><input type="text" id="author" name="author" />
+                </div><br />
+                <div>
+                    <textarea id="content" name="content"></textarea>
+                </div><br />
+                <div>
+                <button class="btn btn-outline-dark" type="submit">POSTER</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
 
 <?php 
 foreach($resultComments as $comments)
@@ -39,7 +70,7 @@ foreach($resultComments as $comments)
                 <p><strong><?= htmlspecialchars($comments->author()) ?></strong></p>
             </div>
             <div class="col-4">
-                <p>Le : <?= $comments->date_content() ?></p>
+                <p>Commenté le <?= $comments->date_content() ?></p>
             </div>
         </div>
         <div class="row">
@@ -49,7 +80,7 @@ foreach($resultComments as $comments)
         </div>
         <div class="row justify-content-end">
             <div class="col-4">
-                <button type="button" class="btn btn-primary" href = "index.php?action=addBillet">Signaler ce commentaire</button>
+                <a type="button" href ="index.php?action=report&id= <?= $comments->id() ?>">Signaler </a><br />
             </div>
         </div>
     </div>
@@ -57,28 +88,6 @@ foreach($resultComments as $comments)
 <?php
 }
 ?>
-
-<!--Ajouter un commentaire au billet-->
-<section id="add-comments">
-    <div class="container_addcomment container-fluid">
-        <div col-lg-4 mr-auto>
-            <h2>Ajouter un commentaire</h2>
-            <form action="index.php?action=addComment&id=<?= $billet->id() ?>" method="post">
-                <div>
-                    <label for="author">Pseudo</label><br />
-                    <input type="text" id="author" name="author" />
-                </div>
-                <div>
-                    <label for="content">Commentaire</label><br />
-                    <textarea id="content" name="content"></textarea>
-                </div>
-                <div>
-                <button class="btn btn-primary" type="submit">POSTER</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</section>
 
 
 <?php $content = ob_get_clean(); ?>
