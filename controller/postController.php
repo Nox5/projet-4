@@ -1,8 +1,8 @@
 <?php 
 namespace App\Controller;
 
-require_once('model/Manager.php');
-require_once('model/billetsManager.php');
+require_once('model/bdd.php');
+require_once('model/postsManager.php');
 require_once('model/commentManager.php');
 
 use \App\Model\Billet;
@@ -41,7 +41,7 @@ class BilletController
         }
         else
         {
-            require('view/createBilletView.php');
+            echo 'Tous les champs ne sont pas remplis !';
         }
     }
 

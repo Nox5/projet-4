@@ -75,7 +75,6 @@ try
             {
                 $reportComment = new CommentController();
                 $reportComment->reportComment($_GET['id']);
-                //$reportComment->getComment($_GET['id']);
             }
         }
 //-----------------------------------------------------------------------------
@@ -126,7 +125,6 @@ try
             }
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                //throw new Exception("id du billet manquant");
                 $billetController = new BilletController();
                 $billetController->suprBillet($_GET['id']);
             }

@@ -1,17 +1,17 @@
 <?php
 namespace App\Model;//Classe dans ce namespace
 
-require_once('model/manager.php');
+require_once('model/bdd.php');
 require_once('model/modelPost.php');
 
-use \App\Model\Manager;
+use \App\Model\Bdd;
 use \App\Model\Post;
 class CommentManager
 {
 // Récupère les commentaires sous un billet
     public function getComments($id_billet)
     {
-        $db = new Manager();
+        $db = new Bdd();
         $bdd = $db->dbConnect();
         $comment = $bdd->prepare('SELECT id, author, content, date_content, signalement FROM comments WHERE id_billet = ? ORDER BY date_content DESC');
  
@@ -32,7 +32,7 @@ class CommentManager
 // Récupère les commentaires signalés
     public function getCommentsSignaler()
     {
-        $db = new Manager();
+        $db = new Bdd();
         $bdd = $db->dbConnect();
         $comment = $bdd->prepare('SELECT id, author, content, date_content, id_billet, signalement FROM comments WHERE signalement = 1 ORDER BY date_content DESC');
  
@@ -53,7 +53,7 @@ class CommentManager
 // Légitimer un commentaires
 public function commentLegitime($id)
 {
-    $db = new Manager();
+    $db = new Bdd();
     $bdd = $db->dbConnect();
     $comment = $bdd->prepare('UPDATE comments SET signalement = 0 WHERE id = ?');
 
@@ -64,7 +64,7 @@ public function commentLegitime($id)
 // Récupérer un commentaire
     public function getComment($id)
     {
-        $db = new Manager();
+        $db = new Bdd();
         $bdd = $db->dbConnect();
 
         $comment = $bdd->prepare('SELECT id, author, content, date_content, signalement, id_billet FROM comments WHERE id = ? ORDER BY date_content DESC');
@@ -81,7 +81,7 @@ public function commentLegitime($id)
 // Poster un commentaire
     public function postComments($id, $author, $content)
     {
-        $db = new Manager();
+        $db = new Bdd();
         $bdd = $db->dbConnect();
 
         $comments = $bdd->prepare('INSERT INTO comments(id_billet, author, content, date_content) VALUES(?, ?, ?, NOW())');
@@ -93,7 +93,7 @@ public function commentLegitime($id)
 // Signaler un commentaire
     public function commentReport($id)
     {
-        $db = new Manager();
+        $db = new Bdd();
         $bdd = $db->dbConnect();
 
         $reportComment = $bdd->prepare('UPDATE comments SET signalement = 1 WHERE id = ?');
@@ -103,7 +103,7 @@ public function commentLegitime($id)
 // Supprimer un commentaire
     public function deleteComment($id)
     {
-        $db = new Manager();
+        $db = new Bdd();
         $bdd = $db->dbConnect();
 
         $delete = $bdd->prepare('DELETE FROM comments WHERE id = ?');

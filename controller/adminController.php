@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 
-require_once('model/Manager.php');
+require_once('model/bdd.php');
 require('model/usersManager.php');
 //require('model/commentManager.php');
 
@@ -10,7 +10,6 @@ use \App\Model\CommentManager;
 
 class AdminController
 {
-// 
    public function connexionLogin()
    {
         if (isset($_POST) && !empty($_POST))

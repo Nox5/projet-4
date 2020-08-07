@@ -1,4 +1,3 @@
-
 <?php $title = 'Chapitre'; ?>
 
 <?php ob_start(); ?>
@@ -7,21 +6,25 @@
     <div class="container_billet container">
         <div class="background_billet row">
             <div class="col">
-                <h3><?=htmlspecialchars($billet->title()) ?></h3>
-                <h4><?=nl2br(htmlspecialchars($billet->author())) ?></h4>
-                <p><?=$billet->content() ?></p>
-                <em><?= nl2br($billet->date_creation()) ?></em>
-            </div>
-            <div class="col-lg-2">
-                <?php 
-                    if (isLogged())
-                    {
-                ?>
-                    <a href="index.php?action=deleteBillet&amp;id=<?=$billet->id()?>" class="btn btn-outline-dark">Supprimer </a><br />
-                    <a href="index.php?action=submitUpdate&amp;id=<?=$billet->id()?>" class="btn btn-outline-dark">modifier </a>
-                <?php 
-                    }
-                ?>
+                <div class="card">
+                    <div class="card-header">
+                        <h3><?=htmlspecialchars($billet->title()) ?></h3>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><?=nl2br(htmlspecialchars($billet->author()))?></h5>
+                        <p><?= nl2br($billet->date_creation()) ?></p>
+                        <p class="card-text"><?=$billet->content() ?></p>
+                        <?php 
+                        if (isLogged())
+                        {
+                        ?>
+                            <a href="index.php?action=deleteBillet&amp;id=<?=$billet->id()?>" class="btn btn-outline-dark">Supprimer </a><br />
+                            <a href="index.php?action=submitUpdate&amp;id=<?=$billet->id()?>" class="btn btn-outline-dark">modifier </a>
+                        <?php 
+                        }
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -31,7 +34,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="bouton_vue_billet col-4">
-            <p><a href="index.php" class="btn btn-outline-dark">Retour à la liste des billets</a></p>
+            <p><a href="index.php" class="btn btn-outline-dark">Retour à la liste des chapitres</a></p>
         </div>
     </div>
 </div>
@@ -45,7 +48,7 @@
             <div class="bordure"></div><br />
             <form action="index.php?action=addComment&id=<?= $billet->id() ?>" method="post">
                 <div>
-                    <label for="author">Nom : </label><input type="text" id="author" name="author" />
+                    <label for="author">Pseudo : </label><input type="text" id="author" name="author" />
                 </div><br />
                 <div>
                     <textarea id="content" name="content"></textarea>

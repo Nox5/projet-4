@@ -1,9 +1,9 @@
 <?php
 //On inclut le fichier dont on a besoin
-require_once('model/Manager.php');
+require_once('model/bdd.php');
 
 //On inclu le fichier article.php
-require_once('model/billetsManager.php');
+require_once('model/postsManager.php');
 ?>
 
 <?php $title = 'Accueil'; ?>
@@ -37,7 +37,7 @@ require_once('model/billetsManager.php');
                     <div class="card-body">
                         <h5 class="card-title"><?=htmlspecialchars($billet->title());?></h5>
                         <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet->author());?></h6>
-                        <p class="card-text"><?=$billet->content();?></p>
+                        <!--<p class="card-text"><?=$billet->content();?></p>-->
                         <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet->date_creation());?></h6>
                         <a href="index.php?action=billet&id=<?= $billet->id(); ?>" class="btn btn-primary">Lire ce chapitre</a>
                     </div>
@@ -48,10 +48,7 @@ require_once('model/billetsManager.php');
     </div>
 </section>
 
-<?php
-$db = new \App\Model\Manager();
-$db->dbConnect();
-?>
+
 
 <?php $content = ob_get_clean(); ?>
 

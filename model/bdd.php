@@ -1,7 +1,7 @@
 <?php
 namespace App\Model;
 
-class Manager
+class Bdd
 {
     //Les constantes
     const DB_HOST = 'mysql:host=localhost;dbname=blogforteroche;charset=utf8';

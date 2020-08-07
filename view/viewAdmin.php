@@ -40,7 +40,7 @@ foreach($comment as $comments)
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <h5>Nouvel article</h5><br />
+                <h5>Nouveau chapitre</h5><br />
                 <form action="index.php?action=addBillet" method="post">
                     <div>
                         <label for="Titre">Titre :</label><input type="text" id="title" name="title" />

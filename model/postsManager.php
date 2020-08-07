@@ -1,19 +1,19 @@
 <?php
 namespace App\Model;
 
-require_once("model/Manager.php");
+require_once("model/bdd.php");
 require_once("model/modelArticle.php");
 
 use PDO;
-use \App\Model\Manager;
+use \App\Model\Bdd;
 use \App\Model\Article;
 
-class Billet extends Manager//Manager
+class Billet extends Bdd//Manager
 {
 // Fonction qui me permet d'afficher les billets du blog
     public function getBillets()
     {
-        $db = new Manager();
+        $db = new Bdd();
         $bdd = $db->dbConnect();
         $result = $bdd->query('SELECT id, title, content, author, date_creation, image FROM billets ORDER BY id DESC');
 
@@ -32,7 +32,7 @@ class Billet extends Manager//Manager
 // Fonction qui me permet d'afficher un seul billet
     public function getBillet($id)
     {
-        $db = new Manager();
+        $db = new Bdd();
         $connection = $db->dbConnect();
         $result = $connection->prepare('SELECT id, title, content, author, date_creation FROM billets WHERE id = ?');
 
@@ -52,7 +52,7 @@ class Billet extends Manager//Manager
 // Fonction qui permet de créer un nouveau billet
     public function createBillet($title, $author, $content, $image)
     {
-        $db = new Manager();
+        $db = new Bdd();
         $connection = $db->dbConnect();
 
         $result = $connection->prepare('INSERT INTO billets (title, author, content, image, date_creation) VALUES (?, ?, ?, ?, NOW())');
@@ -64,7 +64,7 @@ class Billet extends Manager//Manager
 // Fonction qui permet de modifier un billet
     public function updateBillet($title, $content, $id)
     {
-        $db = new Manager();
+        $db = new Bdd();
         $connection = $db->dbConnect();
 
         $updateBillet = $connection->prepare('UPDATE billets SET title = ?, content = ? WHERE id = ?');
@@ -76,7 +76,7 @@ class Billet extends Manager//Manager
 // Fonction qui permet de supprimer un billet
     public function deleteBillet($id)
     {
-        $db = new Manager();
+        $db = new Bdd();
         $connection = $db->dbConnect();
 
         $delete = $connection->prepare('DELETE FROM billets WHERE id = ?');

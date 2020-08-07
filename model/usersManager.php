@@ -1,14 +1,14 @@
 <?php
 namespace App\Model;
 
-require_once('model/Manager.php');
+require_once('model/bdd.php');
 
-use \App\Model\Manager;
-class UsersManager extends Manager
+use \App\Model\Bdd;
+class UsersManager extends Bdd
 {
    public function testConnexion()
    {
-        $connexion = new Manager();
+        $connexion = new Bdd();
         $db = $connexion->dbConnect();
 
         $req = $db->prepare('SELECT * FROM users WHERE username = :username AND password = :password');

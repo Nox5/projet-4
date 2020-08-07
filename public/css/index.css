@@ -72,7 +72,7 @@ footer
 {
     background: url("https://cdn.pixabay.com/photo/2016/02/07/19/48/aurora-1185464_1280.jpg") no-repeat center center;
     background-size: cover;
-    padding: 10em;
+    /*padding: 10em;*/
 }
 
 
@@ -96,16 +96,6 @@ footer
 
 
 /* PAGE D'UN BILLET ET SES COMMENTAIRES*/
-.background_billet
-{
-    border: 1px solid silver;
-    border-radius: 3px;
-    padding: 2rem 2rem;
-    margin: 60px 0px;
-    color: black;
-}
-
-
 .container_billet
 {
     margin-top: 2em;

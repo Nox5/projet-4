@@ -24,7 +24,9 @@
         <!--Navigation-->
             <nav class="navbar navbar-expand-lg" id="mainNav">
                 <div class="container">
-                    <a class="navbar-brand js-scroll-tigger" href="index.php">JEAN FORTEROCHE</a>
+                    <a class="navbar-brand js-scroll-tigger" href="index.php">
+                    <img src="public/images/lettre.jpg" width="30" height="30">
+                    JEAN FORTEROCHE</a>
 
                     <button class="navbar-toggler text-uppercase rounded collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +42,10 @@
                                 <?php if (isLogged())
                                 {
                                     echo '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-tigger" href="index.php?action=dashboard">' . $_SESSION['identifiant']['user'] . '</a>';
-                                    echo '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-tigger" href="index.php?action=deconnexion">Deconnexion</a>';
+                                ?>
+                                <li class="nav-item mx-0 mx-lg-1">
+                                <?php
+                                    echo '<a class="btn btn-danger" href="index.php?action=deconnexion">Deconnexion</a>';
                                 }
                                 else
                                 {
