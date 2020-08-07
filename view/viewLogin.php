@@ -3,18 +3,19 @@
 <?php ob_start(); ?>
 
 
-<div class="headercommentaires container-fluid">
-    <div class="row">
-        <div class="col-lg-4 mr-auto">
-        <h2>Se connecter</h2>
+<div class="page_connection_seconnecter container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <h5>Connexion</h5>
         </div>
     </div>
-</div>
+    <div class="bordure"></div>
+</div><br />
 
 
 <div class ="container">
     <div class="row">
-        <div class="col-12">
+        <div class="login col-4">
             <form action="index.php?action=connexionLogin" method="POST">
                 <div class="form-group">
                     <input type="text" class="form-control" id="pseudo" name="username" placeholder="Pseudo">
@@ -22,9 +23,7 @@
                 <div class="form-group">
                     <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
                 </div>
-                <div class="col">
-                    <button type="submit" class="btn btn-primary">Valider</button>
-                </div>
+                <button type="submit" class="btn btn-outline-dark">Valider</button>
             </form>
         </div>
     </div>

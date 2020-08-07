@@ -24,7 +24,9 @@
         <!--Navigation-->
             <nav class="navbar navbar-expand-lg" id="mainNav">
                 <div class="container">
-                    <a class="navbar-brand js-scroll-tigger" href="index.php">JEAN FORTEROCHE</a>
+                    <a class="navbar-brand js-scroll-tigger" href="index.php">
+                    <img src="public/images/lettre.jpg" width="30" height="30">
+                    JEAN FORTEROCHE</a>
 
                     <button class="navbar-toggler text-uppercase rounded collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,15 +34,24 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ml-auto ">
+                        <ul class="navbar-nav ml-auto">
                             <li class="nav-item mx-0 mx-lg-1">
                                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-tigger active" href="index.php">Accueil</a>
                             </li>
                             <li class="nav-item mx-0 mx-lg-1">
-                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-tigger" href="#">Contact</a>
-                            </li>
-                            <li class="nav-item mx-0 mx-lg-1">
-                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-tigger" href="index.php?action=connexionLogin">Connexion</a>
+                                <?php if (isLogged())
+                                {
+                                    echo '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-tigger" href="index.php?action=dashboard">' . $_SESSION['identifiant']['user'] . '</a>';
+                                ?>
+                                <li class="nav-item mx-0 mx-lg-1">
+                                <?php
+                                    echo '<a class="btn btn-danger" href="index.php?action=deconnexion">Deconnexion</a>';
+                                }
+                                else
+                                {
+                                    echo '<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-tigger" href="index.php?action=connexionLogin">Connexion</a>';
+                                }
+                                ?>
                             </li>
                         </ul>
                     </div>
@@ -55,7 +66,7 @@
                 <div class="row">
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <h4 class="text-blog mb-4">BILLET SIMPLE POUR L'ALASKA</h4>
-                        <p class="lead mb-0">- Jean Forterochee -</p>
+                        <p class="lead mb-0">- Jean Forteroche -</p>
                     </div>
 
                     <div class="col-lg-4 mb-5 mb-lg-0">

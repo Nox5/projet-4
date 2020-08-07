@@ -1,26 +1,36 @@
 <?php
 namespace App\Controller;
 
-require_once('model/Manager.php');
+require_once('model/bdd.php');
 require('model/usersManager.php');
+//require('model/commentManager.php');
 
-class adminController
+use \App\Model\UsersManager;
+use \App\Model\CommentManager;
+
+class AdminController
 {
    public function connexionLogin()
    {
         if (isset($_POST) && !empty($_POST))
         {
-            if (!empty(htmlspecialchars($_POST['username'])) && !empty(htmlspecialchars($_POST['password'])))
+            $user = null;
+
+            if (!empty(htmlspecialchars($_POST['username'])) && !empty($_POST['password']))
             {
-                $login = new \App\Model\UsersManager();
+                $login = new UsersManager();
                 $user = $login->testConnexion();
-                //var_dump($user);
             }
-            if ($user)
+
+
+            if (is_array($user))
             {
-                $_SESSION['user'] =  $_POST['username'];
-                $_SESSION['password'] = $_POST['password'];
-                require('view/viewAdmin.php');
+                $_SESSION['identifiant'] = array(
+                    'user' => $_POST['username'],
+                );
+
+                header('Location: index.php?action=dashboard');
+                die();
             }
             else
             {
@@ -31,5 +41,21 @@ class adminController
         {
             require('view/viewLogin.php');
         }
+    }
+
+    public function dashboard()
+    {
+        $commentManager = new CommentManager();
+        $comment = $commentManager->getCommentsSignaler();
+
+        require('view/viewAdmin.php');
+    }
+
+    public function deconnexion()
+    {
+        $_SESSION = array();
+        session_destroy();
+
+        header('Location:index.php');
     }
 }

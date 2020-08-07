@@ -1,62 +1,54 @@
 <?php
 //On inclut le fichier dont on a besoin
-require_once('model/Manager.php');
+require_once('model/bdd.php');
 
 //On inclu le fichier article.php
-require_once('model/billetsManager.php');
+require_once('model/postsManager.php');
 ?>
 
 <?php $title = 'Accueil'; ?>
 
 <?php ob_start(); ?>
 <!--Texte de présentation page d'accueil-->
-<section class="page-accueil text-white mb-0" id="about">
+<section class="page-accueil mb-0" id="about">
     <div class="container">
-        <!--Titre de la page d'accueil-->
-        <h3 class="page-accueil-titre text-center text-white">Billet simple pour l'Alaska</h3>
         <div class="row">
-            <div class="col-lg-4 ml-auto">
-                <p class="lead">Bienvenue sur mon blog <span class="titre-roman-accueil">Billet simple pour l'Alaska</span>, l'idée de ce blog est d'y mettre chaque semaine
+            <div class="col text_acceuil text-white">
+                <h3>Billet simple pour l'Alaska</h3>
+                <p>Bienvenue sur mon blog Billet simple pour l'Alaska, l'idée de ce blog est d'y mettre chaque semaine
                     un chapitre de mon roman, pour que vous puissiez le lire mais aussi le commenter.
+                    N'hésitez pas à me laisser un commentaire, j'y répondrais avec plaisir.
                 </p>
-            </div>
-
-            <div class="col-lg-4 mr-auto">
-                <p class="lead">N'hésitez pas à me donner vos avis j'y répondrais avec plaisir.</p>
-                <span class="signature">Jean Forteroche</span>
             </div>
         </div>
     </div>
 </section>
 
 <!--Affichage des différents billets-->
-    <section class="page-accueil-cards" id="card">
-        <div class="container">
-            <div class="row">
-            <?php foreach($billets as $billet)//On parcourt $billets, la valeur de l'item courant est copié dans $billet
-            {
-            ?>
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="<?=htmlspecialchars($billet->image());?>" alt="chapitre 1">
-                        <div class="card-body">
-                            <h5 class="card-title"><?=htmlspecialchars($billet->title());?></h5>
-                            <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet->author());?></h6>
-                            <p class="card-text"><?=$billet->content();?></p>
-                            <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet->date_creation());?></h6>
-                            <a href="index.php?action=billet&id=<?= $billet->id(); ?>" class="btn btn-primary">Lire ce chapitre</a>
-                        </div>
+<section class="page-accueil-cards" id="card">
+    <div class="container">
+        <div class="row">
+        <?php foreach($billets as $billet)//On parcourt $billets, la valeur de l'item courant est copié dans $billet
+        {
+        ?>
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="<?=htmlspecialchars($billet->image());?>" alt="chapitre 1">
+                    <div class="card-body">
+                        <h5 class="card-title"><?=htmlspecialchars($billet->title());?></h5>
+                        <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet->author());?></h6>
+                        <!--<p class="card-text"><?=$billet->content();?></p>-->
+                        <h6 class="card-subtitle mb-2"><?=htmlspecialchars($billet->date_creation());?></h6>
+                        <a href="index.php?action=billet&id=<?= $billet->id(); ?>" class="btn btn-primary">Lire ce chapitre</a>
                     </div>
                 </div>
-            <?php } ?>
             </div>
+        <?php } ?>
         </div>
-    </section>
+    </div>
+</section>
 
-<?php
-$db = new \App\Model\Manager();
-$db->dbConnect();
-?>
+
 
 <?php $content = ob_get_clean(); ?>
 

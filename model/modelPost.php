@@ -7,7 +7,7 @@ class Post
     private $_author;
     private $_content;
     private $_date_content;
-    //private $_signalement;
+    private $_signalement;
 
     public function hydrate(array $donnees)
     {

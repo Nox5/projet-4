@@ -1,17 +1,22 @@
+/* MENU DU BLOG */
 .navbar
 {
     background-color: #2c3e50;
+    box-shadow: 0px 8px 8px -10px black;
 }
+
 
 #mainNav .navbar-toggler .navbar-toggler-icon
 {
     color: #FFF;
 }
 
+
 .navbar-toggler .fa-align-justify
 {
     color: white;
 }
+
 
 #mainNav .navbar-brand
 {
@@ -20,20 +25,31 @@
     font-weight: 700;
 }
 
+
+#mainNav .navbar-nav li.nav-item a.nav-link
+{
+    color: #FFF;
+    font-weight: 500;
+}
+
+
 #mainNav
 {
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
 
+
+
+/* CORPS ET PIED DU BLOG */
 body
 {
     margin: 0;
     padding: 0;
-    background-image: url(https://cdn.pixabay.com/photo/2016/02/07/19/48/aurora-1185464_1280.jpg);
-    background-size: cover;
-    background-repeat:no-repeat;
+    background-color: white;
+    font-family: Helvetica, Arial, sans-serif;
 }
+
 
 footer
 {
@@ -43,16 +59,34 @@ footer
     color: #FFF;
 }
 
-#mainNav .navbar-nav li.nav-item a.nav-link
-{
-    color: #FFF;
-    font-weight: 500;
-}
 
 .copyright
 {
     background-color: black
 }
+
+
+
+/* PAGE D'ACCUEIL*/
+.page-accueil
+{
+    background: url("https://cdn.pixabay.com/photo/2016/02/07/19/48/aurora-1185464_1280.jpg") no-repeat center center;
+    background-size: cover;
+    /*padding: 10em;*/
+}
+
+
+.page-accueil-cards
+{
+    margin-top: 5em;
+}
+
+
+.text_acceuil
+{
+    text-shadow: 1px 1px 10px black;
+}
+
 
 .row
 {
@@ -60,29 +94,52 @@ footer
     flex-wrap: wrap;
 }
 
-.background_billet
-{
-    background-color: white;
-    border-radius: 3px;
-    padding: 1rem 1rem;
-    color: black;
-}
 
+/* PAGE D'UN BILLET ET SES COMMENTAIRES*/
 .container_billet
 {
     margin-top: 2em;
     margin-bottom: 2em;
 }
 
+
+.container_billet a
+{
+    margin-top: 10px;
+}
+
+
+.bouton_vue_billet
+{
+    margin-bottom: 20px;
+}
+
+
 .container_comments .background_comment p
 {
     color: white;
 }
 
-.container_addcomment h2, label
+
+.container_addcomment
 {
-    color: white;
+    padding-bottom: 60px;
 }
+
+
+.container_addcomment h2
+{
+    color: black;
+}
+
+
+.container_addcomment label
+{
+    display: block;
+	width: 150px;
+	float: left;
+}
+
 
 .container_comments
 {
@@ -90,19 +147,98 @@ footer
     margin-bottom: 5%;
 }
 
+
 .headercommentaires h2
 {
     color: white;
     margin: 2em 0em 1em;
 }
 
-/*VUE ADMIN*/
-.text-center
+
+/*VUE DE CONNECTION*/
+.page_connection_seconnecter
 {
-    color: white;
+    text-align: center;
+    margin: 10px 0px;
+}
+
+
+.login
+{
+    margin-bottom: 30px;
+}
+
+
+/*VUE ADMIN*/
+.admin text-center
+{
+    color: black;
 }
 
 .adminGestion h2
 {
     color: white;
+}
+
+.text_welcome_administration
+{
+    text-align: center;
+    margin: 20px 0px;
+}
+
+
+.tableau_administration h5
+{
+    font-weight: bold;
+}
+
+
+.tableau_administration
+{
+    margin-top: 20px;
+}
+
+.formulaire_administration
+{
+    margin: 5rem 0rem;
+}
+
+
+.formulaire_administration h5
+{
+    font-weight: bold;
+}
+
+
+.formulaire_administration label
+{
+    display: block;
+	width: 150px;
+	float: left;
+}
+
+
+div.bordure
+{
+    border-bottom: 0.5px solid silver;
+    margin-top: 10px;
+}
+
+
+.header_nouveau_billet
+{
+    margin-top: 100px;
+}
+
+
+.texte_modification_billet
+{
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+.formulaire_nouveau_billet
+{
+    margin: 100px 0px;
 }
